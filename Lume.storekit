@@ -109,8 +109,8 @@
           "billingPlans" : [
             {
               "billingPlanType" : "BILLED_UPFRONT",
-              "commitmentDisplayPrice" : "0.99",
-              "displayPrice" : "0.99",
+              "commitmentDisplayPrice" : "0.00",
+              "displayPrice" : "0.00",
               "internalID" : "43245CE8",
               "isEnabled" : true
             }
@@ -118,7 +118,7 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "0.99",
+          "displayPrice" : "0.00",
           "familyShareable" : true,
           "groupNumber" : 1,
           "internalID" : "5002",
