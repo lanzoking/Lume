@@ -89,11 +89,20 @@ struct EPGSettingsView: View {
                 } else {
                     ForEach(sources) { source in
                         EPGSourceRow(source: source)
-                            .swipeActions(edge: .trailing) {
-                                if source.isManual {
-                                    Button("Delete", role: .destructive) { delete(source) }
+//                            .swipeActions(edge: .trailing) {
+//                                if source.isManual {
+//                                    Button("Delete", role: .destructive) { delete(source) }
+//                                }
+//                            }
+                            .contextMenu {
+//                                if(!source.isEnabled){
+                                    Button(role: .destructive) {
+                                        delete(source)
+                                    } label: {
+                                        Label("Delete Source", systemImage: "trash")
+                                    }
                                 }
-                            }
+//                            }
                     }
                 }
 
@@ -143,7 +152,7 @@ struct EPGSettingsView: View {
         @Bindable var source: EPGSource
 
         var body: some View {
-            Toggle(isOn: $source.isEnabled) {
+            HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(source.name)
                     Text(subtitle)
@@ -152,7 +161,14 @@ struct EPGSettingsView: View {
                         .lineLimit(1)
                         .truncationMode(.middle)
                 }
+
+                Spacer()
+
+                Toggle("", isOn: $source.isEnabled)
+                    .labelsHidden()
+                    .frame(width: 40) // keeps toggle small and out of the way
             }
+            .contentShape(Rectangle()) // makes whole row clickable
         }
 
         private var subtitle: String {
